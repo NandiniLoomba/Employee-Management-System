@@ -1,0 +1,4 @@
+{
+    "PORT":8080,
+    "KEY":"mongodb+srv://nandiniloomba31:Ajit_3110@cluster0.mjhjj.mongodb.net/data?retryWrites=true&w=majority"
+}
