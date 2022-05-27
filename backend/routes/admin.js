@@ -12,4 +12,6 @@ Router.post("/delete-user",AdminController.postDeleteUser)
 
 Router.get("/:UserId",AdminController.getUser)
 
+Router.post("/add-role",AdminController.postRole);
+
 module.exports=Router;

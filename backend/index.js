@@ -2,21 +2,26 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const config = require("./config.json");
-const routes = require("./routes/admin");
-const logger = require("express-logger");
+const AdminRoutes = require("./routes/admin");
+const AuthRoutes = require("./routes/auth");
+const jwt = require("jsonwebtoken");
+const cookieParser = require("cookie-parser");
+const User = require("./models/user");
+require("dotenv").config();
 
-mongoose.connect(config.KEY, () => {
+mongoose.connect(process.env.KEY, () => {
   console.log("Database connected successfully..!");
 });
 
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(routes);
+app.use(AuthRoutes);
+app.use(AdminRoutes);
 
-const server = app.listen(config.PORT, () => {
-  console.log("Listening to the port", config.PORT);
+const server = app.listen(process.env.PORT, () => {
+  console.log("Listening to the port", process.env.PORT);
 });
 
 module.exports = server;
