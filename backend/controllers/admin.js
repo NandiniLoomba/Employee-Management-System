@@ -6,13 +6,20 @@ module.exports.postUser = (req, res, next) => {
     .then((user) => {
       if (user) {
         res.send("Email already exists....");
-      } 
-      else {
+      } else {
         Role.findOne({ role: req.body.role }).then((newuser) => {
           if (newuser) {
-            const {fname,lname,gender,email,dob,phone,password,role}=req.body;
+            const { fname, lname, gender, email, dob, phone, password, role } =
+              req.body;
             const NewUser = new User({
-              fname,lname,gender,email,dob,phone,password,role
+              fname,
+              lname,
+              gender,
+              email,
+              dob,
+              phone,
+              password,
+              role,
             });
             NewUser.save()
               .then(() => res.send("Created..!"))
@@ -27,6 +34,12 @@ module.exports.postUser = (req, res, next) => {
 module.exports.getUsers = (req, res, next) => {
   User.find()
     .then((user) => res.send(user))
+    .catch((err) => console.log(err));
+};
+
+module.exports.getRoles = (req, res, next) => {
+  Role.find()
+    .then((role) => res.send(role))
     .catch((err) => console.log(err));
 };
 
@@ -56,9 +69,7 @@ module.exports.getUser = (req, res, next) => {
 };
 
 module.exports.postRole = (req, res, next) => {
-  
   Role.findOne({ role: req.body.role }).then((role) => {
-  
     if (role) {
       res.send("This role already exists..");
     } else {

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import ShowRoles from "./show-roles";
 import { useNavigate } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import "./styles/form.css";
@@ -19,8 +20,6 @@ function AddUser() {
   const navigate = useNavigate();
 
   const handleInput = (e) => {
-    console.log(e.target);
-
     setData((prevData) => {
       prevData[e.target.name] = e.target.value;
       return {
@@ -44,8 +43,8 @@ function AddUser() {
         role,
         password,
       })
-      .then(() => {
-        console.log("Successfull..");
+      .then((res) => {
+        console.log(res);
         navigate("/update-user");
       })
       .catch((err) => console.log(err));
@@ -53,6 +52,7 @@ function AddUser() {
   return (
     <>
       <Form onSubmit={handleSubmit} className="userForm">
+        <h3 className="heading">Add a new user...!</h3>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
@@ -103,27 +103,32 @@ function AddUser() {
             onChange={handleInput}
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
+
+        <Form.Group>
           <Form.Label>Gender</Form.Label>
-          <Form.Control
-            value={data.gender}
+          <select
             name="gender"
-            type="text"
-            placeholder="Gender"
+            value={data.gender}
+            className="dropDown"
             onChange={handleInput}
-          />
+          >
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Role</Form.Label>
-          <Form.Control
-            value={data.role}
+        <Form.Group>
+          <Form.Label>Gender</Form.Label>
+          <select
             name="role"
-            type="text"
-            placeholder="Role"
+            value={data.gender}
+            className="dropDown"
             onChange={handleInput}
-          />
+          >
+            <ShowRoles></ShowRoles>
+          </select>
         </Form.Group>
+
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control

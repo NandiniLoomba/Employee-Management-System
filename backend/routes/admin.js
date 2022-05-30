@@ -6,6 +6,8 @@ Router.post("/add-user",AdminController.postUser);
 
 Router.get("/get-users",AdminController.getUsers);
 
+Router.get("/get-roles",AdminController.getRoles);
+
 Router.post("/update-user",AdminController.postUpdateUser);
 
 Router.post("/delete-user",AdminController.postDeleteUser)

@@ -22,6 +22,7 @@ function AddRole() {
   return (
     <>
       <Form onSubmit={handleSubmit} className="userForm">
+      <h3 className="heading">Add a new role..!</h3>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Role</Form.Label>
           <Form.Control
