@@ -1,9 +1,11 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Login from "./components/login";
-import Navbar from "./components/navbar";
-import AddUser from "./components/add-user"
-import AddRole from "./components/add-role"
-import GetUsers from "./components/get-users"
+import Login from "./components/auth/login";
+import Navbar from "./components/common/navbar";
+import AddUser from "./components/admin/add-user"
+import AddRole from "./components/admin/add-role"
+import GetUsers from "./components/admin/get-users"
+
+
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
           <Route path="/add-role" element={<AddRole />} />
         </Routes>
       </Router>
+     
+    
     </>
   );
 }

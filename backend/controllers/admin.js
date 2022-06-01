@@ -5,28 +5,24 @@ module.exports.postUser = (req, res, next) => {
   User.findOne({ email: req.body.email })
     .then((user) => {
       if (user) {
-        res.send("Email already exists....");
-      } else {
-        Role.findOne({ role: req.body.role }).then((newuser) => {
-          if (newuser) {
-            const { fname, lname, gender, email, dob, phone, password, role } =
-              req.body;
-            const NewUser = new User({
-              fname,
-              lname,
-              gender,
-              email,
-              dob,
-              phone,
-              password,
-              role,
-            });
-            NewUser.save()
-              .then(() => res.send("Created..!"))
-              .catch((err) => console.log(err));
-          } else res.send("Role doesn't exits..");
-        });
+        return res.send({ validity: 0, error: "Email already exists...!" });
       }
+
+      const { fname, lname, gender, email, dob, phone, password, role } =
+        req.body;
+      const NewUser = new User({
+        fname,
+        lname,
+        gender,
+        email,
+        dob,
+        phone,
+        password,
+        role,
+      });
+      NewUser.save()
+        .then(() => res.send({ validity: 1 }))
+        .catch((err) => console.log(err));
     })
     .catch((err) => console.log(err));
 };
@@ -71,13 +67,13 @@ module.exports.getUser = (req, res, next) => {
 module.exports.postRole = (req, res, next) => {
   Role.findOne({ role: req.body.role }).then((role) => {
     if (role) {
-      res.send("This role already exists..");
+      res.send({ validity: 0, error: "This role already exists...!" });
     } else {
       const NewRole = new Role({
         role: req.body.role,
       });
       NewRole.save()
-        .then(() => res.send("Role created...!"))
+        .then(() => res.send({ validity: 1 }))
         .catch((err) => console.log(err));
     }
   });

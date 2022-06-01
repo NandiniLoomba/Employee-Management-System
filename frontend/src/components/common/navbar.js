@@ -5,7 +5,7 @@ import { Nav, Container, Navbar } from "react-bootstrap";
 function NavigationBar() {
   return (
     <>
-      <Navbar bg="primary" variant="dark">
+      <Navbar bg="primary">
         <Container>
           <Navbar.Brand href="#home">Navbar</Navbar.Brand>
           <Nav className="me-auto">
@@ -19,7 +19,7 @@ function NavigationBar() {
               Get Users
             </Nav.Link>
             <Nav.Link as={Link} to="/add-role">
-              Add Roles
+              Add Role
             </Nav.Link>
           </Nav>
         </Container>
