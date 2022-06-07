@@ -4,8 +4,6 @@ const Router = express.Router();
 
 Router.post("/login",AuthController.Login);
 
-// Router.post("/refresh",AuthController.RefreshToken);
-
-// Router.post("/logout",AuthController.Logout);
+Router.get("/isLogin",AuthController.isLogin)
 
 module.exports=Router;

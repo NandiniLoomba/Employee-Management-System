@@ -1,30 +1,34 @@
 import { useState } from "react";
 import "../style.css";
 import FormInput from "../common/FormInputs";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import ShowRoles from "./show-roles";
 
-const AddUser = () => {
+const AddUser = (props) => {
+  const {state}=useLocation();
   const [error, setError] = useState("");
   const inputs = require("../common/validation.json");
   const navigate = useNavigate();
+  const {_id,email, lname, fname, dob, phone, gender, role, password } = state.user;
   const [values, setValues] = useState({
-    fname: "",
-    lname: "",
-    dob: "",
-    password: "",
-    email: "",
-    phone: "",
-    gender: "",
-    role: "",
+    _id,
+    email,
+    lname,
+    fname,
+    dob,
+    phone,
+    gender,
+    role,
+    password,
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { email, lname, fname, dob, phone, gender, role, password } = values;
+    const { _id,email, lname, fname, dob, phone, gender, role, password } = values;
 
-    const res = await axios.post("/add-user", {
+    const res = await axios.post("/update-user", {
+      _id,
       email,
       lname,
       fname,
@@ -40,14 +44,13 @@ const AddUser = () => {
   };
 
   const onChange = (e) => {
-    setError("");
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
   return (
     <div className="app">
       <form onSubmit={handleSubmit}>
-        <h1>ADD USER</h1>
+        <h1>UPDATE USER</h1>
         {inputs.map((input) => (
           <FormInput
             key={input.id}
@@ -56,6 +59,8 @@ const AddUser = () => {
             onChange={onChange}
           />
         ))}
+        <label>Role</label>
+        <br></br>
         <select
           name="role"
           value={values["role"]}
@@ -66,6 +71,8 @@ const AddUser = () => {
           <ShowRoles></ShowRoles>
         </select>
         <br></br>
+        <label>Gender</label>
+        <br></br>
         <select
           name="gender"
           value={values["gender"]}
@@ -74,13 +81,13 @@ const AddUser = () => {
           required="true"
         >
           <option value="" selected disabled>
-            Select a Gender
+            Select an Option
           </option>
           <option value="male">Male</option>
           <option value="female">Female</option>
         </select>
         <div style={{ color: "red", "text-align": "center" }}>{error}</div>
-        <button className="submitButton">Submit</button>
+        <button className="submitButton">Update</button>
       </form>
     </div>
   );

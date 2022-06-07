@@ -1,3 +1,4 @@
+const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 
 module.exports.Login = (req, res, next) => {
@@ -17,4 +18,11 @@ module.exports.Login = (req, res, next) => {
       }
     })
     .catch((err) => console.log(err));
+};
+
+module.exports.isLogin = (req, res, next) => {
+  jwt.verify(req.cookies.jwt, process.env.SECRET, function (err, user) {
+    if (err) return res.send({ validity: 0 });
+    else return res.send({ validity: 1 });
+  });
 };

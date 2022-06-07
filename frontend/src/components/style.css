@@ -2,7 +2,7 @@ body{
     background: url("https://cdn.britannica.com/74/182174-050-6755AB49/balloon-sky.jpg");
 }
 .userForm{
-    border: solid 5px rgb(56, 89, 251);
+    border: solid 5px rgb(28, 142, 241);
     padding: 10px;
     margin-left: 30%;
     margin-right: 30%;
@@ -73,9 +73,6 @@ input:invalid[focused="true"] ~ span{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
-    
-   
 }
   
   form{
@@ -83,12 +80,12 @@ input:invalid[focused="true"] ~ span{
       padding: 0px 60px;
       border-radius: 10px;
       margin-top: 50px;
+      margin-bottom: 50px;
   }
   
   h1{
-      color: rgb(77, 1, 77);
+      color: rgb(28, 142, 241);
       text-align: center;
-      
   }
   
   .submitButton{
@@ -96,7 +93,7 @@ input:invalid[focused="true"] ~ span{
       height: 50px;
       padding: 10px;
       border: none;
-      background-color: rebeccapurple;
+      background-color: rgb(28, 142, 241);
       color: white;
       border-radius: 5px;
       font-weight: bold;
@@ -106,5 +103,24 @@ input:invalid[focused="true"] ~ span{
       margin-bottom: 30px;
   }
 
+  .footer{
+     text-align: center;
+     color: white;
+     position: fixed;
+     bottom: 0;
+     height: 30px;
+     width: 100%;
+     background-color: rgb(28, 142, 241);
+  }
+
+  .errorPage{
+      display: flex;
+      width: 100%;
+      padding-top: 30vh;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: red;
+  }
   
 

@@ -40,15 +40,17 @@ module.exports.getRoles = (req, res, next) => {
 };
 
 module.exports.postUpdateUser = (req, res, next) => {
-  User.findById(req.body.id)
+  const {_id,email, lname, fname, dob, phone, gender, role, password}=req.body;
+  User.findById(_id)
     .then((user) => {
-      user.fname = req.body.fname;
-      user.lname = req.body.lname;
-      user.gender = req.body.gender;
-      user.email = req.body.email;
-      user.dob = req.body.dob;
-      user.phone = req.body.phone;
-      user.role = req.body.role;
+      user.fname = fname;
+      user.lname = lname;
+      user.gender = gender;
+      user.email = email;
+      user.dob = dob;
+      user.phone = phone;
+      user.role = role;
+      user.password=password;
       user.save();
     })
     .then(() => res.send("Updated..!"));
@@ -56,7 +58,7 @@ module.exports.postUpdateUser = (req, res, next) => {
 
 module.exports.postDeleteUser = (req, res, next) => {
   User.findByIdAndDelete(req.body.id)
-    .then(() => console.log("Deleted..!"))
+    .then(() => res.send("Deleted...!"))
     .catch((err) => console.log(err));
 };
 

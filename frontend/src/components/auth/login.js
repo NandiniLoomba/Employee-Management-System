@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
 import "../style.css";
 import { useNavigate } from "react-router-dom";
 import FormInput from "../common/FormInputs";
+import { UserAuth } from "./auth";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const { auth, setAuth } = useContext(UserAuth);
 
   const handleEmail = (e) => {
     setError("");
@@ -51,7 +53,7 @@ function Login() {
       email,
       password,
     });
-
+    setAuth(res.data.validity);
     if (res.data.validity === 0) {
       setError(res.data.error);
     } else {
@@ -62,7 +64,7 @@ function Login() {
   return (
     <div className="app">
       <form onSubmit={handleSubmit}>
-        <h1>ADD USER</h1>
+        <h1>Login</h1>
 
         <FormInput {...validEmail} />
         <FormInput {...validPassword} />
