@@ -30,7 +30,6 @@ body{
 .userList{
     width: 50%;
     margin: 5% 5% 5% 5%;
-    
 }
 
 
@@ -121,6 +120,51 @@ input:invalid[focused="true"] ~ span{
       justify-content: center;
       align-items: center;
       color: red;
+  }
+
+  .downloadBtn{
+      background-color: rgb(243, 30, 94);
+      margin-left: 100vh;
+      margin-bottom: 1%;
+      font-weight: bold;
+  }
+
+  /* Pagination */
+
+  .paginationBttns {
+    width: 80%;
+    height: 40px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 6vh;
+    margin-left: 20vh;
+  }
+  
+  .paginationBttns a {
+    padding: 10px;
+    margin: 8px;
+    border-radius: 5px;
+    border: 1px solid #2b2eff;
+    color: #2b2eff;
+    cursor: pointer;
+  }
+  
+  .paginationBttns a:hover {
+    color: white;
+    background-color: #2b2eff;
+  }
+  
+  .paginationActive a {
+    color: white;
+    background-color: #2b2eff;
+  }
+  
+  .paginationDisabled a {
+    color: black;
+    background-color: #2b2eff;
   }
   
 

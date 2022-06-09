@@ -17,13 +17,14 @@ function ShowRoles() {
 
   var rows = [];
   rows.push(
-    <option value="" selected disabled>
+    <option value="" disabled key={""}>
       Select a Role
     </option>
   );
   for (var i = 0; i < Roles.length; i++) {
     const value = Roles[i].role;
-    rows.push(<option value={value}>{value}</option>);
+    const key=i;
+    rows.push(<option value={value} key={key}>{value}</option>);
   }
 
   return <>{rows}</>;

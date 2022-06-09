@@ -3,7 +3,7 @@ import "../style.css";
 import FormInput from "../common/FormInputs";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import ShowRoles from "./show-roles";
+import ShowRoles from "../common/show-roles";
 
 const AddUser = () => {
   const [error, setError] = useState("");
@@ -63,23 +63,23 @@ const AddUser = () => {
           onChange={onChange}
           required="true"
         >
-          <ShowRoles></ShowRoles>
+          <ShowRoles ></ShowRoles>
         </select>
         <br></br>
         <select
           name="gender"
-          value={values["gender"]}
+          defaultValue={values["gender"]}
           className="dropDown"
           onChange={onChange}
           required="true"
         >
-          <option value="" selected disabled>
+          <option value="" disabled>
             Select a Gender
           </option>
           <option value="male">Male</option>
           <option value="female">Female</option>
         </select>
-        <div style={{ color: "red", "text-align": "center" }}>{error}</div>
+        <div style={{ color: "red" }}>{error}</div>
         <button className="submitButton">Submit</button>
       </form>
     </div>

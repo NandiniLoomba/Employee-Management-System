@@ -40,7 +40,7 @@ function AddRole() {
           pattern="^[A-Za-z0-9]{3,16}$"
           required="true"
         />
-        <div style={{ color: "red", "text-align": "center" }}>{error}</div>
+        <div style={{ color: "red" }}>{error}</div>
         <button className="submitButton">Submit</button>
       </form>
     </div>

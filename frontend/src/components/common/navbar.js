@@ -18,7 +18,7 @@ function NavigationBar() {
                   Add User
                 </Nav.Link>
                 <Nav.Link as={Link} to="/get-users">
-                  Get Users
+                  Show Users
                 </Nav.Link>
                 <Nav.Link as={Link} to="/add-role">
                   Add Role

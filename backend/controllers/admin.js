@@ -40,7 +40,8 @@ module.exports.getRoles = (req, res, next) => {
 };
 
 module.exports.postUpdateUser = (req, res, next) => {
-  const {_id,email, lname, fname, dob, phone, gender, role, password}=req.body;
+  const { _id, email, lname, fname, dob, phone, gender, role, password } =
+    req.body;
   User.findById(_id)
     .then((user) => {
       user.fname = fname;
@@ -50,7 +51,7 @@ module.exports.postUpdateUser = (req, res, next) => {
       user.dob = dob;
       user.phone = phone;
       user.role = role;
-      user.password=password;
+      user.password = password;
       user.save();
     })
     .then(() => res.send("Updated..!"));

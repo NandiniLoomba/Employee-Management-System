@@ -53,8 +53,8 @@
     "type": "tel",
     "placeholder": "Phone number",
     "errorMessage": "Please enter a valid phone number.",
-    "label": "Phone Number (+91)",
-    "pattern": "[+]91[789][0-9]{9}",
+    "label": "Phone Number",
+    "pattern": "[789][0-9]{9}",
     "required": true
   }
 ]

@@ -68,7 +68,7 @@ function Login() {
 
         <FormInput {...validEmail} />
         <FormInput {...validPassword} />
-        <div style={{ color: "red", "text-align": "center" }}>{error}</div>
+        <div style={{ color: "red"}}>{error}</div>
         <button className="submitButton">Submit</button>
       </form>
     </div>

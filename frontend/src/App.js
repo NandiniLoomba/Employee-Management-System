@@ -3,7 +3,7 @@ import Login from "./components/auth/login";
 import Navbar from "./components/common/navbar";
 import AddUser from "./components/admin/add-user";
 import AddRole from "./components/admin/add-role";
-import GetUsers from "./components/admin/get-users";
+import ShowUsers from "./components/admin/Show-Users";
 import UpdateUser from "./components/admin/update-user";
 import ErrorPage from "./components/common/ErrorPage";
 import { UserAuth } from "./components/auth/auth";
@@ -30,7 +30,7 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Login />}></Route>
             <Route exact path="/add-user" element={auth===1 ? <AddUser /> : <Login />} />
-            <Route exact path="/get-users" element={auth===1 ? <GetUsers /> : <Login />} />
+            <Route exact path="/get-users" element={auth===1 ? <ShowUsers /> : <Login />} />
             <Route exact path="/add-role" element={auth===1 ? <AddRole /> : <Login />} />
             <Route exact path="/update-user" element={auth===1 ? <UpdateUser /> : <Login />} />
             <Route path="*" element={<ErrorPage />} />
