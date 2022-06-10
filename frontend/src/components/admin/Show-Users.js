@@ -4,6 +4,7 @@ import Pagination from "../common/Pagination";
 import "../style.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import ShowRoles from "../common/show-roles";
 
 function Users() {
   const [Users, setUsers] = useState([]);
@@ -28,6 +29,7 @@ function Users() {
     setUsers(Users.filter((item) => item._id !== userId));
     console.log(res);
   };
+  const onChange = (e) => {console.log("jjjj",e.target.value)};
   const headers = [
     { label: "First Name", key: "fname" },
     { label: "Last Name", key: "lname" },
@@ -50,7 +52,7 @@ function Users() {
         >
           Download Users
         </CSVLink>
-
+        
         <Pagination
           Users={Users}
           deleteUser={deleteUser}

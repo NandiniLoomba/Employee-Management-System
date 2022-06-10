@@ -23,11 +23,16 @@ function NavigationBar() {
                 <Nav.Link as={Link} to="/add-role">
                   Add Role
                 </Nav.Link>
+                <Nav.Link as={Link} to="/logout">
+                  Logout
+                </Nav.Link>
               </>
             )}
-            <Nav.Link as={Link} to="/">
-              Login
-            </Nav.Link>
+            {auth === 0 && (
+              <Nav.Link as={Link} to="/">
+                Login
+              </Nav.Link>
+            )}
           </Nav>
         </Container>
       </Navbar>

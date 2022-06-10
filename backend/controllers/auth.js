@@ -27,3 +27,8 @@ module.exports.isLogin = (req, res, next) => {
     else return res.send({ validity: 1 });
   });
 };
+
+module.exports.Logout = (req, res, next) => {
+  res.clearCookie("jwt");
+  res.send({ validity: 0 });
+};

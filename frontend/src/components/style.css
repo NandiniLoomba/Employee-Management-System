@@ -166,5 +166,18 @@ input:invalid[focused="true"] ~ span{
     color: black;
     background-color: #2b2eff;
   }
+
+  .logout{
+      display: flex;
+      flex-direction: column;
+      margin-top: 30vh;
+      align-items: center;
+  }
+
+  h2{
+     color: red;
+  }
+
+  
   
 
