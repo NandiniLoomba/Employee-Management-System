@@ -23,8 +23,12 @@ function ShowRoles() {
   );
   for (var i = 0; i < Roles.length; i++) {
     const value = Roles[i].role;
-    const key=i;
-    rows.push(<option value={value} key={key}>{value}</option>);
+    const key = i;
+    rows.push(
+      <option value={value} key={key}>
+        {value}
+      </option>
+    );
   }
 
   return <>{rows}</>;

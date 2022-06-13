@@ -37,6 +37,7 @@ function App() {
             <Route exact path="/logout" element={auth===1 ? <Logout /> : <Login />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
+          <div className="footer">Copyright 2022. All Rights Reserved.</div>
         </UserAuth.Provider>
       </Router>
     </>

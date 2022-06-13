@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../style.css";
 import FormInput from "../common/FormInputs";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -6,11 +6,12 @@ import axios from "axios";
 import ShowRoles from "../common/show-roles";
 
 const AddUser = (props) => {
-  const {state}=useLocation();
+  const { state } = useLocation();
   const [error, setError] = useState("");
   const inputs = require("../common/validation.json");
   const navigate = useNavigate();
-  const {_id,email, lname, fname, dob, phone, gender, role, password } = state.user;
+  const { _id, email, lname, fname, dob, phone, gender, role, password } =
+    state.user;
   const [values, setValues] = useState({
     _id,
     email,
@@ -22,10 +23,11 @@ const AddUser = (props) => {
     role,
     password,
   });
-
+ 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { _id,email, lname, fname, dob, phone, gender, role, password } = values;
+    const { _id, email, lname, fname, dob, phone, gender, role, password } =
+      values;
 
     const res = await axios.post("/update-user", {
       _id,
@@ -86,7 +88,7 @@ const AddUser = (props) => {
           <option value="male">Male</option>
           <option value="female">Female</option>
         </select>
-        <div style={{ color: "red"}}>{error}</div>
+        <div style={{ color: "red" }}>{error}</div>
         <button className="submitButton">Update</button>
       </form>
     </div>

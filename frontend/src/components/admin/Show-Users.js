@@ -8,6 +8,8 @@ import ShowRoles from "../common/show-roles";
 
 function Users() {
   const [Users, setUsers] = useState([]);
+  const [Positions, setPositions] = useState(Users);
+  const [Role, setRole] = useState("");
 
   useEffect(() => {
     if (Users.length === 0) {
@@ -15,11 +17,24 @@ function Users() {
     }
   });
 
+  useEffect(() => {
+    setPositions(Users);
+  }, [Users]);
+
+  useEffect(() => {
+    setPositions(() =>
+      Users.filter((user) => {
+        return user.role === Role;
+      })
+    );
+  }, [Role]);
+
   const getUsers = async () => {
     const users = await axios.get("/get-users");
     setUsers(users.data);
   };
   const navigate = useNavigate();
+  
   const updateUser = async (user) => {
     navigate("/update-user", { state: { user: user } });
   };
@@ -29,7 +44,10 @@ function Users() {
     setUsers(Users.filter((item) => item._id !== userId));
     console.log(res);
   };
-  const onChange = (e) => {console.log("jjjj",e.target.value)};
+  const onChange = (e) => {
+    setRole(e.target.value);
+  };
+
   const headers = [
     { label: "First Name", key: "fname" },
     { label: "Last Name", key: "lname" },
@@ -41,20 +59,36 @@ function Users() {
   ];
   return (
     <>
-      <div style={{ marginTop: "25px" }}>
-        <CSVLink
-          data={Users}
-          separator={";"}
-          headers={headers}
-          filename={"Users.csv"}
-          className="btn downloadBtn"
-          target="_blank"
-        >
-          Download Users
-        </CSVLink>
-        
+      <div>
+        <div style={{ marginTop: "25px" }} className="topPart">
+          <div>
+            <CSVLink
+              data={Positions}
+              separator={";"}
+              headers={headers}
+              filename={"Users.csv"}
+              className="btn downloadBtn"
+              target="_blank"
+            >
+              Download {Role}
+              {Role && "s"}
+              {!Role && "Users"}
+            </CSVLink>
+          </div>
+          <div>
+            <select
+              name="role"
+              value={Role}
+              className="dropDown"
+              onChange={onChange}
+              required="true"
+            >
+              <ShowRoles></ShowRoles>
+            </select>
+          </div>
+        </div>
         <Pagination
-          Users={Users}
+          Users={Positions}
           deleteUser={deleteUser}
           updateUser={updateUser}
         ></Pagination>

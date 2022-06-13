@@ -1,5 +1,7 @@
 const User = require("../models/user");
 const Role = require("../models/role");
+const bcrypt = require("bcryptjs");
+const crypto = require("crypto");
 
 module.exports.postUser = (req, res, next) => {
   User.findOne({ email: req.body.email })
@@ -10,17 +12,21 @@ module.exports.postUser = (req, res, next) => {
 
       const { fname, lname, gender, email, dob, phone, password, role } =
         req.body;
-      const NewUser = new User({
-        fname,
-        lname,
-        gender,
-        email,
-        dob,
-        phone,
-        password,
-        role,
-      });
-      NewUser.save()
+      bcrypt
+        .hash(password, 12)
+        .then((hashedPassword) => {
+          const NewUser = new User({
+            fname,
+            lname,
+            gender,
+            email,
+            dob,
+            phone,
+            password: hashedPassword,
+            role,
+          });
+          return NewUser.save();
+        })
         .then(() => res.send({ validity: 1 }))
         .catch((err) => console.log(err));
     })
@@ -44,15 +50,17 @@ module.exports.postUpdateUser = (req, res, next) => {
     req.body;
   User.findById(_id)
     .then((user) => {
-      user.fname = fname;
-      user.lname = lname;
-      user.gender = gender;
-      user.email = email;
-      user.dob = dob;
-      user.phone = phone;
-      user.role = role;
-      user.password = password;
-      user.save();
+      bcrypt.hash(password, 12).then((hashedPassword) => {
+        user.fname = fname;
+        user.lname = lname;
+        user.gender = gender;
+        user.email = email;
+        user.dob = dob;
+        user.phone = phone;
+        user.role = role;
+        user.password = hashedPassword;
+        return user.save();
+      });
     })
     .then(() => res.send("Updated..!"));
 };
