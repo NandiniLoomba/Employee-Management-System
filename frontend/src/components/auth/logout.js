@@ -3,7 +3,8 @@ import React, { useContext } from "react";
 import { UserAuth } from "./auth";
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
-import "../style.css"
+import Card from "react-bootstrap/Card";
+import "../style.css";
 
 function Logout() {
   const { auth, setAuth } = useContext(UserAuth);
@@ -17,12 +18,17 @@ function Logout() {
     navigate("/");
   };
   return (
-    <div className="logout">
-      <h2>Are you sure that you want to logout..?</h2>
-      <Button variant="danger" onClick={handleSubmit}>
-        Logout
-      </Button>{" "}
-    </div>
+    <>
+      <Card bg={"info"} className="logout">
+        <Card.Header>Logout</Card.Header>
+        <Card.Body>
+          <Card.Text>Are you sure that you want to logout..?</Card.Text>
+          <Button variant="danger" onClick={handleSubmit}>
+            Logout
+          </Button>
+        </Card.Body>
+      </Card>
+    </>
   );
 }
 

@@ -22,11 +22,15 @@ function Users() {
   }, [Users]);
 
   useEffect(() => {
-    setPositions(() =>
-      Users.filter((user) => {
-        return user.role === Role;
-      })
-    );
+    if (Role === "All") {
+      setPositions(Users);
+    } else {
+      setPositions(() =>
+        Users.filter((user) => {
+          return user.role === Role;
+        })
+      );
+    }
   }, [Role]);
 
   const getUsers = async () => {
@@ -34,7 +38,7 @@ function Users() {
     setUsers(users.data);
   };
   const navigate = useNavigate();
-  
+
   const updateUser = async (user) => {
     navigate("/update-user", { state: { user: user } });
   };
@@ -71,20 +75,12 @@ function Users() {
               target="_blank"
             >
               Download {Role}
-              {Role && "s"}
+              {Role && Role!=="All" && "s"}
               {!Role && "Users"}
             </CSVLink>
           </div>
           <div>
-            <select
-              name="role"
-              value={Role}
-              className="dropDown"
-              onChange={onChange}
-              required="true"
-            >
-              <ShowRoles></ShowRoles>
-            </select>
+            <ShowRoles value={Role} onChange={onChange} extra="All"></ShowRoles>
           </div>
         </div>
         <Pagination

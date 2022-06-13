@@ -4,9 +4,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const AdminRoutes = require("./routes/admin");
 const AuthRoutes = require("./routes/auth");
-const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
-const User = require("./models/user");
 require("dotenv").config();
 
 mongoose.connect(process.env.KEY, () => {

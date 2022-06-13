@@ -7,10 +7,10 @@ import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  < >
-    <App />
+  <div className='mainDiv'>
+    <div><App /></div>
     <div className="footer">Copyright 2022. All Rights Reserved.</div>
-  </>
+  </div>
 );
 
 

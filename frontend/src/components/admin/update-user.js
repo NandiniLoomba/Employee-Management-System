@@ -23,7 +23,7 @@ const AddUser = (props) => {
     role,
     password,
   });
- 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { _id, email, lname, fname, dob, phone, gender, role, password } =
@@ -63,15 +63,9 @@ const AddUser = (props) => {
         ))}
         <label>Role</label>
         <br></br>
-        <select
-          name="role"
-          value={values["role"]}
-          className="dropDown"
-          onChange={onChange}
-          required="true"
-        >
-          <ShowRoles></ShowRoles>
-        </select>
+
+        <ShowRoles value={values["role"]} onChange={onChange}></ShowRoles>
+
         <br></br>
         <label>Gender</label>
         <br></br>

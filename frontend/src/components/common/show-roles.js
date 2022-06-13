@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-function ShowRoles() {
+function ShowRoles(props) {
   const [Roles, setRoles] = useState([]);
 
   useEffect(() => {
@@ -31,7 +31,26 @@ function ShowRoles() {
     );
   }
 
-  return <>{rows}</>;
+  if(props.extra){
+    rows.push(
+      <option value={props.extra} key={props.extra}>
+        {props.extra}
+      </option>
+    );
+  }
+  return (
+    <>
+      <select
+        name="role"
+        value={props.value}
+        className="dropDown"
+        onChange={props.onChange}
+        required="true"
+      >
+        {rows}
+      </select>
+    </>
+  );
 }
 
 export default ShowRoles;

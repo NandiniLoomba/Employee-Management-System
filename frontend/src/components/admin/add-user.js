@@ -56,15 +56,9 @@ const AddUser = () => {
             onChange={onChange}
           />
         ))}
-        <select
-          name="role"
-          value={values["role"]}
-          className="dropDown"
-          onChange={onChange}
-          required="true"
-        >
-          <ShowRoles ></ShowRoles>
-        </select>
+
+        <ShowRoles value={values["role"]} onChange={onChange}></ShowRoles>
+        
         <br></br>
         <select
           name="gender"

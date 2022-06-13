@@ -1,14 +1,6 @@
 body{
     background: url("https://cdn.britannica.com/74/182174-050-6755AB49/balloon-sky.jpg");
 }
-.userForm{
-    border: solid 5px rgb(28, 142, 241);
-    padding: 10px;
-    margin-left: 30%;
-    margin-right: 30%;
-    margin-top: 3%;
-    margin-bottom: 3%;
-}
 
 .dropDown{
     width: 100%;
@@ -18,20 +10,6 @@ body{
     border-radius: 5px;
     border: 1px solid gray;
 }
-
-
-
-.heading{
-    display: flex;
-    justify-content: center;
-    margin-bottom: 7%;
-}
-
-.userList{
-    width: 50%;
-    margin: 5% 5% 5% 5%;
-}
-
 
 .formInput{
     display: flex;
@@ -45,7 +23,6 @@ input{
     border-radius: 5px;
     border: 1px solid gray;
 }
-
 
 label{
     font-size: 12px;
@@ -72,8 +49,7 @@ input:invalid[focused="true"] ~ span{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    height: 100vh;
+    margin: 20px 20px 20px 20px;
 }
   
   form{
@@ -167,10 +143,10 @@ input:invalid[focused="true"] ~ span{
   }
 
   .logout{
-      display: flex;
-      flex-direction: column;
-      margin-top: 30vh;
-      align-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20vh 50vh;
   }
 
   h2{
@@ -185,13 +161,16 @@ input:invalid[focused="true"] ~ span{
       margin-bottom: 2%;
   }
 
-  .topPart select{
+   .topPart select{
     background-color: rgb(243, 30, 94);
     margin-bottom: 1%;
     font-weight: bold;
     color: white;
     text-align: center;
-  }
+  } 
 
-  
+  .mainDiv{
+    display: flex;
+    flex-direction: column;
+  }
 
